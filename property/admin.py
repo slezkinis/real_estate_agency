@@ -17,8 +17,15 @@ class ComplainAdmin(admin.ModelAdmin):
     raw_id_fields = ('complaint_flat',)
 
 
+class FlatInline(admin.TabularInline):
+    model = Flat.owners.through
+
+
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flats',)
+    inlines = [
+        FlatInline
+    ]
  
 
 admin.site.register(Flat, FlatAdmin)
