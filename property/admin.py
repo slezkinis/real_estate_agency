@@ -14,7 +14,7 @@ class FlatAdmin(admin.ModelAdmin):
 
 
 class ComplainAdmin(admin.ModelAdmin):
-    raw_id_fields = ('complaint_flat',)
+    raw_id_fields = ('flat',)
 
 
 class FlatInline(admin.TabularInline):
