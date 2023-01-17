@@ -8,10 +8,8 @@ def copy_owners_from_flats(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     flats = Flat.objects.all()
     for flat in flats:
-        owner_name = flat.owner
-        owners_phonenumber = flat.owners_phonenumber
-        Owner.objects.get_or_create(name=owner_name, defaults={
-            'owners_phonenumber': owners_phonenumber,
+        Owner.objects.get_or_create(name=flat.owner, defaults={
+            'owners_phonenumber': flat.owners_phonenumber,
         })
 
 class Migration(migrations.Migration):
