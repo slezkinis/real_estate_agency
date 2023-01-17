@@ -7,7 +7,7 @@ import phonenumbers
 def correct_phonenumber(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     flats = Flat.objects.all()
-    for flat in flats:
+    for flat in flats.iterator():
         parsed_number = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(parsed_number):
             pure_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)
