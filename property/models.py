@@ -54,8 +54,18 @@ class Flat(models.Model):
 
 
 class Complaint(models.Model):
-    creator = models.ForeignKey(User, verbose_name='Кто пожаловался', on_delete=models.CASCADE)
-    flat = models.ForeignKey(Flat, verbose_name='Квартира, на которую пожаловались', on_delete=models.CASCADE)
+    creator = models.ForeignKey(
+        User,
+        related_name='complaints',
+        verbose_name='Кто пожаловался',
+        on_delete=models.CASCADE
+    )
+    flat = models.ForeignKey(
+        Flat,
+        related_name='complained_flats',
+        verbose_name='Квартира, на которую пожаловались',
+        on_delete=models.CASCADE
+    )
     text = models.TextField(verbose_name='Текст жалобы')
 
 
