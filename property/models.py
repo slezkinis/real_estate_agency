@@ -62,7 +62,7 @@ class Complaint(models.Model):
     )
     flat = models.ForeignKey(
         Flat,
-        related_name='complained_flats',
+        related_name='flats',
         verbose_name='Квартира, на которую пожаловались',
         on_delete=models.CASCADE
     )
